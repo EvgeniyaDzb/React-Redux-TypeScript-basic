@@ -1,5 +1,10 @@
+export interface Todo {
+    id: number;
+    title: string;
+}
+
 export interface TodoState {
-    todos: any[];
+    todos: Todo[];
     loading: boolean;
     error: null | string;
     page: number;
@@ -18,7 +23,7 @@ interface FetchTodoAction {
 }
 interface FetchTodoSuccessAction {
     type: TodoActionTypes.FETCH_TODOS_SUCCESS;
-    payload: any[];
+    payload: Todo[];
 }
 interface FetchTodoErrorAction {
     type: TodoActionTypes.FETCH_TODOS_ERROR;

@@ -1,13 +1,12 @@
-import { TodoAction, TodoActionTypes } from './../../types/todo';
+import { Todo, TodoAction, TodoActionTypes } from './../../types/todo';
 import { Dispatch } from 'redux';
-
 import axios from "axios";
 
 export const fetchTodos = (page =1, limit = 10) => {
     return async (dispatch: Dispatch<TodoAction>) => {
         try{
             dispatch({type: TodoActionTypes.FETCH_TODOS})
-            const response = await axios.get('https://jsonplaceholder.typicode.com/todos',{
+            const response = await axios.get<Todo[]>('https://jsonplaceholder.typicode.com/todos',{
                 params: {
                     _page: page, 
                     _limit: limit
@@ -29,6 +28,7 @@ export const fetchTodos = (page =1, limit = 10) => {
 
 export function setTodoPage(page: number) : TodoAction {
     return {
-        type: TodoActionTypes.SET_TODO_PAGE, payload: page
+        type: TodoActionTypes.SET_TODO_PAGE, 
+        payload: page
     }
 }

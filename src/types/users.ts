@@ -1,5 +1,10 @@
+export interface User {
+    id: number;
+    name: string;
+}
+
 export interface UserState {
-    users: any[];
+    users: User[];
     loading: boolean;
     error: null | string;
 }
@@ -15,7 +20,7 @@ interface FetchUsersAction {
 }
 interface FetchUsersSuccessAction {
     type: UserActionTypes.FETCH_USERS_SUCCESS;
-    payload: any[]
+    payload: User[];
 }
 interface FetchUsersErrorAction {
     type: UserActionTypes.FETCH_USERS_ERROR;
